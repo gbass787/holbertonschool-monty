@@ -7,7 +7,7 @@
  * @line_count: line counter
  */
 
-void pall(stack_t **stack, __atrribute__((unused))unsigned int line_count)
+void pall(stack_t **stack, __attribute__((unused))unsigned int line_count)
 {
 	stack_t *temp;
 

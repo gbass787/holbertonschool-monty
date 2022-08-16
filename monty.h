@@ -1,12 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
 #include <stdio.h>
-#include <stderr.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <stderr.h>
 extern char *glovar;
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -41,5 +40,5 @@ void push(stack_t **stack, unsigned int line_count);
 void pall(stack_t **stack, __attribute__((unused))unsigned int line_count);
 void executeop(char *opcode, stack_t **stack, unsigned int line_count);
 int getdigit(char *digit);
-
+unsigned int count(stack_t *stack);
 #endif
