@@ -1,3 +1,5 @@
+#ifndef MONTY_H
+#define MONTY_H
 #include <stdio.h>
 #include <stderr.h>
 #include <string.h>
@@ -38,5 +40,6 @@ typedef struct instruction_s
 void push(stack_t **stack, unsigned int line_count);
 void pall(stack_t **stack, __attribute__((unused))unsigned int line_count);
 void executeop(char *opcode, stack_t **stack, unsigned int line_count);
+int getdigit(char *digit);
 
 #endif
