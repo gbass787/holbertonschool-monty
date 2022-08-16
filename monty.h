@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stderr.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+extern char *glovar;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -30,5 +34,9 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+void push(stack_t **stack, unsigned int line_count);
+void pall(stack_t **stack, __attribute__((unused))unsigned int line_count);
+void executeop(char *opcode, stack_t **stack, unsigned int line_count);
 
 #endif
