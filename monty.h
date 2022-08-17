@@ -66,6 +66,6 @@ void _pint(stack_t **stack, unsigned int line_count);
 int getdigit(char *digit);
 unsigned int count(stack_t *stack);
 int main(int argc, char *filename);
-void _fdlist(stack_t *stack)
-void nop(stack_t **stack, unsigned int line_count)
+void _fdlist(stack_t *stack);
+void nop(stack_t **stack, unsigned int line_count);
 #endif
