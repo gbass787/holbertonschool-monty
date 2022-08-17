@@ -20,9 +20,8 @@
 typedef struct monty_s
 {
   bool quenue;
-  char *line;
+  char *line = NULL;
   FILE *file;
-  unsigned int line_count;
   size_t stack_mount;
 }monty_t;
 
@@ -63,7 +62,10 @@ typedef struct instruction_s
 void push(stack_t **stack, unsigned int line_count);
 void pall(stack_t **stack, __attribute__((unused))unsigned int line_count);
 void executeop(char *opcode, stack_t **stack, unsigned int line_count);
-void _pint(stack_t **stack, unsigned int line_count)
+void _pint(stack_t **stack, unsigned int line_count);
 int getdigit(char *digit);
 unsigned int count(stack_t *stack);
+int main(int argc char *filename);
+void _fdlist(stack_t *topstack)
+void nop(stack_t **stack, unsigned int line_count)
 #endif
