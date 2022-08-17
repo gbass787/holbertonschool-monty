@@ -9,21 +9,6 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-/**
- *struct monty_s - main variables of monty
- *@file: monty file
- *@line: line
- *@quenue: flag to indicate if its stack or quenue mode
- *@stack_mount: stack builing
- *@line_count: line to be read from stack
- */
-typedef struct monty_s
-{
-  bool quenue;
-  char *line;
-  FILE *file;
-  size_t stack_mount;
-}monty_t;
 
 #define STACK 0
 #define QUENUE 1
@@ -65,7 +50,7 @@ void executeop(char *opcode, stack_t **stack, unsigned int line_count);
 void _pint(stack_t **stack, unsigned int line_count);
 int getdigit(char *digit);
 unsigned int count(stack_t *stack);
-int main(int argc, char *filename);
+int main(int argc, char **filename);
 void _fdlist(stack_t *stack);
 void nop(stack_t **stack, unsigned int line_count);
 #endif
