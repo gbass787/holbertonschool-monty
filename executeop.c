@@ -13,6 +13,8 @@ void executeop(char *opcode, stack_t **stack, unsigned int line_count)
 	instruction_t opcodes[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
