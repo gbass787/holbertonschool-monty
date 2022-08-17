@@ -14,12 +14,32 @@ int main(int argc, char *filename)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
-	monty.file = fopen(filename, "r");
-	if (!monty.file)
+
+	file = fopen(filename, "r");
+
+	if (!file)
 	{
 		fprintf((STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		fprintf(STDERR_FILENO, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	while (getline(&line, &stack_amount, *file) > 0)
+	{
+		if (executeop(&stack, line_count, line, monty_s, file) == 1)
+		{
+			free(line);
+			fclose(file);
+			exit(EXIT_FAILURE);
+		}
+		line_count++;
+	}
+	free(line);
+	_fdlist(stack);
+	fclose(file);
+	return (0):
+}
+
+
+
 
 
