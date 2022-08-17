@@ -13,7 +13,7 @@ void executeop(char *opcode, stack_t **stack, unsigned int line_count)
 	instruction_t opcodes[] = {
 		{"push", push},
 		{"pall", pall},
-		{"pint", pint},
+		{"pint", _pint},
 		{"nop", nop},
 		{NULL, NULL}
 	};
@@ -28,7 +28,7 @@ void executeop(char *opcode, stack_t **stack, unsigned int line_count)
 	}
 	if (opcodes[i].opcode == NULL)
 	{
-		dprintf(2, "L%d: unknown instruction %s\n", line_count, opcode);
+		fprintf(2, "L%d: unknown instruction %s\n", line_count, opcode);
 		exit(EXIT_FAILURE);
 	}
 }
