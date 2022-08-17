@@ -9,5 +9,5 @@
 void nop(stack_t **stack, unsigned int line_count)
 {
 	(void) stack;
-	(void) line_number;
+	(void) line_count;
 }
