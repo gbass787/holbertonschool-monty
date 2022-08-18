@@ -56,4 +56,7 @@ void nop(stack_t **stack, unsigned int line_count);
 void close_file(int status, void *line);
 void free_stack(int status, void *line);
 void free_line(int status, void *line);
+void pop(stack_t **stack, unsigned int line_count);
+void swap(stack_t **stack, unsigned int line_count);
+void add(stack_t **stack, unsigned int line_count);
 #endif

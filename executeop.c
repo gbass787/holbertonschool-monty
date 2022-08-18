@@ -15,6 +15,9 @@ void executeop(char *opcode, stack_t **stack, unsigned int line_count)
 		{"pall", pall},
 		{"pint", _pint},
 		{"nop", nop},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}
 	};
 
