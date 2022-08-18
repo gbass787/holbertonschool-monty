@@ -28,7 +28,7 @@ void executeop(char *opcode, stack_t **stack, unsigned int line_count)
 	}
 	if (opcodes[i].opcode == NULL)
 	{
-		fprintf(2, "L%d: unknown instruction %s\n", line_count, opcode);
+		dprintf(2, "L%d: unknown instruction %s\n", line_count, opcode);
 		exit(EXIT_FAILURE);
 	}
 }

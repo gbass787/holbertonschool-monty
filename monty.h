@@ -11,7 +11,7 @@
 
 
 #define STACK 0
-#define QUENUE 1
+#define QUEUE 1
 
 extern char *glovar;
 /**
@@ -53,4 +53,7 @@ unsigned int count(stack_t *stack);
 int main(int argc, char **filename);
 void _fdlist(stack_t *stack);
 void nop(stack_t **stack, unsigned int line_count);
+void close_file(int status, void *line);
+void free_stack(int status, void *line);
+void free_line(int status, void *line);
 #endif

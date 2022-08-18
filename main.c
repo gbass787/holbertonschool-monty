@@ -1,51 +1,70 @@
 #include "monty.h"
-
+char *glovar;
 
 /**
- * main - monty bytecode interpreter
- * @argc: argument count
- * @filename: path to the file containing Monty byte code
- *Return: EXIT_SUCEEE or EXIT_FALILURE
+ * main - monty interpreter
+ *
+ * @argv: arg vector
+ * @argc: arg count
+ *
+ * Return: 0
  */
-int main(int argc, char **filename)
+
+int main(int argc, char *argv[])
 {
-	char *line = NULL;
+	char *input = NULL, *tokens = NULL, *number = NULL;
+	size_t str_len = 0;
+	unsigned int line_count;
+	int num_check = 0;
+	char *opcode = NULL, *delim = " \t\n";
 	FILE *file = NULL;
-	int input = 1;
-	size_t stack_amount;
 	stack_t *stack = NULL;
 
+	opcode = argv[1];
+	file = fopen(opcode, "r");
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		dprintf(2, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(filename, "r");
-
-	if (!file)
+	if (file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		fprintf(stderr, "Error: malloc failed\n");
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	line = NULL;
-	while (getline(&line, &stack_amount, file) > 0)
+	on_exit(free_stack, &stack);
+	on_exit(close_file, file);
+	on_exit(free_line, &input);
+	for (line_count = 1; getline(&input, &str_len, file) != -1; line_count++)
 	{
-		if (executeop(stack,input, line, file) == 1)
+		tokens = strtok(input, delim);
+		if (tokens == NULL)
 		{
-			free(line);
-			fclose(file);
-			exit(EXIT_FAILURE);
+			continue;
 		}
-		input++;
+		if (strcmp(tokens, "#") != 0)
+		{
+			number = strtok(NULL, delim);
+			while (number != NULL)
+			{
+				num_check = atoi(number);
+				if (num_check == 0 && strcmp(number, "0") != 0)
+				{
+					number = strtok(NULL, delim);
+				}
+				else
+				{
+					glovar = number;
+					executeop(tokens, &stack, line_count);
+					break;
+				}
+			}
+			if (number ==  NULL)
+			{
+				glovar = number;
+				executeop(tokens, &stack, line_count);
+			}
+		}
 	}
-	free(line);
-	_fdlist(stack);
-	fclose(file);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
-
-
-
-
-

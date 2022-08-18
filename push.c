@@ -14,19 +14,19 @@ void push(stack_t **stack, unsigned int line_count)
 
 	if (glovar == NULL)
 	{
-		fprintf(2, "L%d: usage: push integer\n", line_count);
+		dprintf(2, "L%d: usage: push integer\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 	if (getdigit(glovar) == 0)
 	{
-		fprintf(2, "L%d: usage: push integer\n", line_count);
+		dprintf(2, "L%d: usage: push integer\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 	converter = atoi(glovar);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		fprintf(2, "Error: malloc failed\n");
+		dprintf(2, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	new->n = converter;
