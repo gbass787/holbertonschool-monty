@@ -18,6 +18,10 @@ void executeop(char *opcode, stack_t **stack, unsigned int line_count)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"sub", sub},
+		{"div", d_ivision},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
